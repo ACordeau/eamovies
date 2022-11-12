@@ -1,8 +1,16 @@
 import "./App.css";
 import { useGlobalContext } from "./Context";
+import Login from "./components/Login";
 
 function App() {
-  return <main>Hello</main>;
+  const { login } = useGlobalContext();
+
+  return (
+    <main>
+      {!login && <Login></Login>}
+      {login && <section>Blah</section>}
+    </main>
+  );
 }
 
 export default App;
