@@ -19,7 +19,7 @@ const AppProvider = ({ children }) => {
 
   const checkUser = (currUser, password) => {
     let activeUser = users.find((obj) => obj.username === currUser);
-    let verify;
+    let verify = false;
     if (activeUser) {
       verify = checkPassword(activeUser, password);
     }
@@ -33,6 +33,7 @@ const AppProvider = ({ children }) => {
 
   const checkPassword = (activeUser, password) => {
     if (activeUser.password === password) {
+      setCurrentUser(activeUser.moniker);
       return true;
     }
 
@@ -47,7 +48,7 @@ const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{ login, setLogin, currentUser, setCurrentUser, users, checkUser }}
+      value={{ login, setLogin, currentUser, users, checkUser }}
     >
       {children}
     </AppContext.Provider>

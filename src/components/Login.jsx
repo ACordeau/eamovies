@@ -2,10 +2,9 @@ import { useState } from "react";
 import { useGlobalContext } from "../Context";
 
 const Login = () => {
-  const users = useGlobalContext();
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
-  const { setCurrentUser, setLogin, checkUser } = useGlobalContext();
+  const { setLogin, checkUser, currentUser } = useGlobalContext();
 
   const handleChangeUser = (e) => {
     setUser(e.target.value);
@@ -17,8 +16,10 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (checkLogin(user, password) === true) {
+    let check = checkLogin(user, password);
+    if (check === true) {
       setLogin(true);
+      console.log(currentUser);
     }
   };
 
@@ -32,26 +33,35 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="form-container">
-      <input
-        className="form-input"
-        type="text"
-        placeholder="Username"
-        onChange={handleChangeUser}
-        value={user}
-      ></input>
+    <div className="login-page">
+      <div className="inner-form">
+        <h5>
+          {currentUser === ""
+            ? "No users currently logged in"
+            : `${currentUser} is currently logged in`}
+        </h5>
+        <form onSubmit={handleSubmit} className="form-container">
+          <input
+            className="form-input"
+            type="text"
+            placeholder="Username"
+            onChange={handleChangeUser}
+            value={user}
+          ></input>
 
-      <input
-        className="form-input"
-        type="password"
-        placeholder="Password"
-        onChange={handleChangePassword}
-        value={password}
-      ></input>
-      <button className="btn" type="submit">
-        Login
-      </button>
-    </form>
+          <input
+            className="form-input"
+            type="password"
+            placeholder="Password"
+            onChange={handleChangePassword}
+            value={password}
+          ></input>
+          <button className="btn" type="submit">
+            Login
+          </button>
+        </form>
+      </div>
+    </div>
   );
 };
 

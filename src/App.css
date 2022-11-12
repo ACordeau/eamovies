@@ -166,3 +166,33 @@ ul {
 /* End Of Global Styles */
 /* End Of Global Styles */
 /* End Of Global Styles */
+
+/* Login */
+.login-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 2rem;
+  height: 100vh;
+}
+
+.inner-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 60vh;
+  gap: 5rem;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container input {
+  height: 1.5rem;
+}
