@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import userList from "./data/users.json";
-import axios from "axios";
+// import axios from "axios";
 
 const AppContext = React.createContext();
 
